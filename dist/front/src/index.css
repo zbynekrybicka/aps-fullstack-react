@@ -99,3 +99,33 @@
     .ContactContainer {
     }
 }
+@media (min-width: 0px) {
+    .ContactName {
+        width: 100%;
+        display: flex;
+        margin-bottom: 15px;
+    }
+}
+@media (min-width: 640px) {
+    .ContactName {
+    }
+}
+@media (min-width: 1024px) {
+    .ContactName {
+    }
+}
+@media (min-width: 0px) {
+    .ContactPhone {
+        width: 100%;
+        display: flex;
+        margin-bottom: 15px;
+    }
+}
+@media (min-width: 640px) {
+    .ContactPhone {
+    }
+}
+@media (min-width: 1024px) {
+    .ContactPhone {
+    }
+}

@@ -3,6 +3,7 @@ namespace App;
 
 use FastRoute;
 use App\Service\AuthService;
+use App\Service\ContactService;
 
 function route($method, $url, $headers, $data) {
     header('Access-Control-Allow-Origin: *');
@@ -10,10 +11,16 @@ function route($method, $url, $headers, $data) {
     header('Access-Control-Allow-Methods: POST, PUT, GET, OPTIONS');
     $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $authService = AuthService::get();
+    $contactService = ContactService::get();
         $r->addRoute(
             'POST', 
             '/login', 
             [ $authService, 'postLogin']
+        );
+        $r->addRoute(
+            'PUT', 
+            '/contact', 
+            [ $contactService, 'putContact']
         );
     });
     $routeInfo = $dispatcher->dispatch($method, $url);

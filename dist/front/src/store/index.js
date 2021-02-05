@@ -43,6 +43,21 @@ export const reducer = createSlice({
         selectContact: (state, action) => {
             state.selectedContact = action.payload
         },
+        ContactCancelReducer: (state, action) => {
+            state.selectedContact.id = null
+        },
+        setlangSelectedContactName: (state, action) => {
+            state.selectedContact.name = action.payload
+        },
+        setlangSelectedContactPhone: (state, action) => {
+            state.selectedContact.phone = action.payload
+        },
+        putContactSuccess: (state, action) => {
+            state.appData.manager.contact[state.appData.manager.contact.findIndex(item => state.selectedContact.id === item.id)] = Object.assign({}, state.selectedContact)
+            state.selectedContact.id = null
+        },
+        putContactError: (state, action) => {
+        },
     },
 });
 
