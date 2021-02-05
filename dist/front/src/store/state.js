@@ -27,6 +27,7 @@ export default {
                 "cancel": "Zru\u0161it",
                 "name": "Jm\u00e9no",
                 "phone": "Telefon",
+                "email": "E-mail",
                 "save": "Ulo\u017eit"
             }
         },
@@ -55,6 +56,7 @@ export default {
                 "cancel": "Cancel",
                 "name": "Name",
                 "phone": "Phone",
+                "email": "E-mail",
                 "save": "Save"
             }
         }
@@ -87,6 +89,7 @@ export default {
     "selectedContact": {
         "id": null,
         "name": "",
-        "phone": ""
+        "phone": "",
+        "email": ""
     }
 }

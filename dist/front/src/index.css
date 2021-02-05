@@ -129,3 +129,18 @@
     .ContactPhone {
     }
 }
+@media (min-width: 0px) {
+    .ContactEmail {
+        width: 100%;
+        display: flex;
+        margin-bottom: 15px;
+    }
+}
+@media (min-width: 640px) {
+    .ContactEmail {
+    }
+}
+@media (min-width: 1024px) {
+    .ContactEmail {
+    }
+}

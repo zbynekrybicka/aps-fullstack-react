@@ -52,6 +52,9 @@ export const reducer = createSlice({
         setlangSelectedContactPhone: (state, action) => {
             state.selectedContact.phone = action.payload
         },
+        setlangSelectedContactEmail: (state, action) => {
+            state.selectedContact.email = action.payload
+        },
         putContactSuccess: (state, action) => {
             state.appData.manager.contact[state.appData.manager.contact.findIndex(item => state.selectedContact.id === item.id)] = Object.assign({}, state.selectedContact)
             state.selectedContact.id = null

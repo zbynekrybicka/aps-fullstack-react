@@ -4,6 +4,7 @@ import { reducer } from '../store';
 import ContactCancel from './ContactCancel';
 import ContactName from './ContactName';
 import ContactPhone from './ContactPhone';
+import ContactEmail from './ContactEmail';
 import ContactSave from './ContactSave';
 
 const {  } = reducer.actions;
@@ -18,6 +19,8 @@ function ContactDetailContainer({}) {
         <ContactName
          />
         <ContactPhone
+         />
+        <ContactEmail
          />
         <ContactSave
          />
