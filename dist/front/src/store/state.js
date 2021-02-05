@@ -22,12 +22,6 @@ export default {
                 "contact": "Kontakty",
                 "campaign": "Kampan\u011b",
                 "call": "Hovory"
-            },
-            "selectedContact": {
-                "cancel": "Zru\u0161it",
-                "name": "Jm\u00e9no",
-                "phone": "Telefon",
-                "save": "Ulo\u017eit"
             }
         },
         {
@@ -50,12 +44,6 @@ export default {
                 "contact": "Contacts",
                 "campaign": "Campaigns",
                 "call": "Calls"
-            },
-            "selectedContact": {
-                "cancel": "Cancel",
-                "name": "Name",
-                "phone": "Phone",
-                "save": "Save"
             }
         }
     ],
@@ -85,8 +73,6 @@ export default {
         }
     },
     "selectedContact": {
-        "id": null,
-        "name": "",
-        "phone": ""
+        "id": null
     }
 }
