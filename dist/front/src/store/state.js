@@ -9,7 +9,10 @@ export default {
                     "Mana\u017eer",
                     "Administr\u00e1tor"
                 ],
-                "header": "P\u0159ihla\u0161ovac\u00ed formul\u00e1\u0159"
+                "header": "P\u0159ihla\u0161ovac\u00ed formul\u00e1\u0159",
+                "username": "P\u0159ihla\u0161ovac\u00ed jm\u00e9no",
+                "password": "Heslo",
+                "login": "P\u0159ihl\u00e1sit"
             },
             "langs": {
                 "cz": "Czech",
@@ -34,7 +37,10 @@ export default {
                     "Manager",
                     "Admin"
                 ],
-                "header": "Login form"
+                "header": "Login form",
+                "username": "Username",
+                "password": "Password",
+                "login": "Sign in"
             },
             "langs": {
                 "cz": "\u010cesky",
@@ -55,6 +61,10 @@ export default {
     ],
     "activeLang": 0,
     "section": 0,
+    "loginForm": {
+        "username": "",
+        "password": ""
+    },
     "user": {
         "role": null
     },
