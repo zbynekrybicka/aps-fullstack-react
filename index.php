@@ -128,6 +128,17 @@ $contactSection->component('ContactListContainer')
         ->listItemText('item.phone')
     ->listContainer()->clickReducer('selectContact', [ 'state.selectedContact = action.payload' ], 'item');
 
+$contactSection->component('ContactDetailContainer')
+    ->attribute('if', 'state.selectedContact.id')
+    ->reducerButton('ContactCancel', 'selectedContact.cancel', ['Zrušit', 'Cancel'], 'grey', ['state.selectedContact.id = null'])
+    ->input('ContactName', 'text', 'selectedContact.name', ['Jméno', 'Name'])
+    ->input('ContactPhone', 'text', 'selectedContact.phone', ['Telefon', 'Phone'])
+    ->button('ContactSave', 'selectedContact.save', ['Uložit', 'Save'], 'green')
+    ->ajaxClick('putContact', 'put', '/contact', 'selectedContact', 'contact', [], [])
+    ->saveItemReducer('selectedContact', 'appData.manager.contact', ['state.selectedContact.id = null'])
+    ->service()
+    ->resource('rest', 'Rest')
+    ->restMethod('put', 'contact');
 
 /**
  *
