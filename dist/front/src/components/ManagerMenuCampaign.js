@@ -10,7 +10,7 @@ function ManagerMenuCampaign({}) {
   const dispatch = useDispatch();
   const MenuCampaignLang = useSelector(MenuCampaignLangSelector);
   return (<button
-            className={'green'}
+            className={'blue'}
             onClick={e => dispatch(ManagerMenuCampaignReducer())}
         >{MenuCampaignLang}</button>);
 }

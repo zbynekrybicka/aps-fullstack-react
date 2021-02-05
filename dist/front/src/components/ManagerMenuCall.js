@@ -10,7 +10,7 @@ function ManagerMenuCall({}) {
   const dispatch = useDispatch();
   const MenuCallLang = useSelector(MenuCallLangSelector);
   return (<button
-            className={'green'}
+            className={'blue'}
             onClick={e => dispatch(ManagerMenuCallReducer())}
         >{MenuCallLang}</button>);
 }

@@ -1,12 +1,13 @@
 body {
     background-color: #dadada;
     margin: 0;
-    font-family: Inter, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 input[type=text], input[type=password] {
     padding: 5px;
-    width: 100%;
+    width: calc(100% - 10px);
+    margin-bottom: 15px;
 }
 
 .Langs div {
@@ -17,6 +18,10 @@ button {
     padding: 5px 25px;
     font-weight: bold;
     border: 0;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 button.red {
@@ -31,10 +36,21 @@ button.blue {
     border: 1px solid #7f92da;
 }
 
+button.blue:hover {
+    background-color: #d0daff;
+    border-color: #d0daff;
+}
+
+
 button.green {
     background-color: #549c59;
     color: black;
     border: 1px solid #549c59;
+}
+
+button.green:hover {
+    background-color: #9efba4;
+    border-color: #9efba4;
 }
 
 button.grey {

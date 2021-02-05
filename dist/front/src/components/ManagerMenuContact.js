@@ -10,7 +10,7 @@ function ManagerMenuContact({}) {
   const dispatch = useDispatch();
   const MenuContactLang = useSelector(MenuContactLangSelector);
   return (<button
-            className={'green'}
+            className={'blue'}
             onClick={e => dispatch(ManagerMenuContactReducer())}
         >{MenuContactLang}</button>);
 }

@@ -44,36 +44,6 @@
     }
 }
 @media (min-width: 0px) {
-    .Username {
-        width: 100%;
-        display: flex;
-        margin-bottom: 15px;
-    }
-}
-@media (min-width: 640px) {
-    .Username {
-    }
-}
-@media (min-width: 1024px) {
-    .Username {
-    }
-}
-@media (min-width: 0px) {
-    .Password {
-        width: 100%;
-        display: flex;
-        margin-bottom: 15px;
-    }
-}
-@media (min-width: 640px) {
-    .Password {
-    }
-}
-@media (min-width: 1024px) {
-    .Password {
-    }
-}
-@media (min-width: 0px) {
     .Admin {
         padding: 15px;
     }

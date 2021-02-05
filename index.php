@@ -48,21 +48,6 @@ $loginForm = $app->component('LoginForm')
 $loginForm->component('h1')
     ->attribute('lang', ['text', 'loginForm.header', ['Přihlašovací formulář', 'Login form']]);
 
-$loginForm
-    ->input('Username', 'text', 'loginForm.username', ['Přihlašovací jméno', 'Username'], 'postLogin')
-    ->input('Password', 'password', 'loginForm.password', ['Heslo', 'Password'], 'postLogin')
-    ->button('Login', 'loginForm.login', ['Přihlásit', 'Sign in'], 'blue')
-        ->ajaxClick('postLogin','post','/login','loginForm','auth',
-            [
-                'state.authToken = action.payload.authToken',
-                'state.user = action.payload.user',
-                'state.appData = action.payload.appData'
-            ],
-            [ 'state.errorMessage = action.payload'])
-        ->noAuth()
-            ->service()
-            ->resource('userAuth', 'UserAuth')
-            ->method([ 'return $this->userAuth->login($request);' ]);
 
 /**
  *
@@ -105,9 +90,9 @@ $manager = $admin->component('Manager')
  * Main menu
  */
 $menu = $manager->component('ManagerMenu')
-    ->reducerButton('ManagerMenuContact', 'menu.contact', ['Kontakty', 'Contacts'], 'green', ['state.section = 0'])
-    ->reducerButton('ManagerMenuCampaign', 'menu.campaign', ['Kampaně', 'Campaigns'], 'green', ['state.section = 1'])
-    ->reducerButton('ManagerMenuCall', 'menu.call', ['Hovory', 'Calls'], 'green', ['state.section = 2']);
+    ->reducerButton('ManagerMenuContact', 'menu.contact', ['Kontakty', 'Contacts'], 'blue', ['state.section = 0'])
+    ->reducerButton('ManagerMenuCampaign', 'menu.campaign', ['Kampaně', 'Campaigns'], 'blue', ['state.section = 1'])
+    ->reducerButton('ManagerMenuCall', 'menu.call', ['Hovory', 'Calls'], 'blue', ['state.section = 2']);
 
 /**
  *
