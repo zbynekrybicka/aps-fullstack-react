@@ -48,6 +48,21 @@ $loginForm = $app->component('LoginForm')
 $loginForm->component('h1')
     ->attribute('lang', ['text', 'loginForm.header', ['Přihlašovací formulář', 'Login form']]);
 
+$loginForm
+    ->input('Username', 'text', 'loginForm.username', ['Přihlašovací jméno', 'Username'], 'postLogin')
+    ->input('Password', 'password', 'loginForm.password', ['Heslo', 'Password'], 'postLogin')
+    ->button('Login', 'loginForm.login', ['Přihlásit', 'Sign in'], 'blue')
+    ->ajaxClick('postLogin','post','/login','loginForm','auth',
+        [
+            'state.authToken = action.payload.authToken',
+            'state.user = action.payload.user',
+            'state.appData = action.payload.appData'
+        ],
+        [ 'state.errorMessage = action.payload'])
+    ->noAuth()
+    ->service()
+    ->resource('userAuth', 'UserAuth')
+    ->method([ 'return $this->userAuth->login($request);' ]);
 
 /**
  *
