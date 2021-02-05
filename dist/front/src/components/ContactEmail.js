@@ -2,19 +2,19 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reducer } from '../store';
 
-const { setlangSelectedContactEmail } = reducer.actions;
+const { setSelectedContactEmail } = reducer.actions;
 
-const langSelectedContactEmailSelector = state => state.data.selectedContact.email;
+const SelectedContactEmailSelector = state => state.data.selectedContact.email;
 const SelectedContactEmailLangSelector = state => state.data.lang[state.data.activeLang].selectedContact.email;
 
 function ContactEmail({}) {
   const dispatch = useDispatch();
-  const langSelectedContactEmail = useSelector(langSelectedContactEmailSelector);
+  const SelectedContactEmail = useSelector(SelectedContactEmailSelector);
   const SelectedContactEmailLang = useSelector(SelectedContactEmailLangSelector);
   return (<input
             type={'text'}
-            defaultValue={langSelectedContactEmail}
-            onInput={e => dispatch(setlangSelectedContactEmail(e.target.value))}
+            defaultValue={SelectedContactEmail}
+            onInput={e => dispatch(setSelectedContactEmail(e.target.value))}
             placeholder={SelectedContactEmailLang}
          />);
 }

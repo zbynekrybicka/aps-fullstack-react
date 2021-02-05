@@ -9,6 +9,7 @@
 namespace App\Resource;
 
 use App\Response;
+use Dibi\Exception;
 
 class Rest
 {
@@ -28,7 +29,11 @@ class Rest
     public function put($table, $data) {
         $id = $data->id;
         unset($data->id);
-        $this->db->update($table, (array) $data)->where(['id' => $id])->execute();
-        return new Response(200, $data);
+        try {
+            $this->db->update($table, (array)$data)->where(['id' => $id])->execute();
+            return new Response(204, null);
+        } catch (Exception $e) {
+            return new Response(500, $e->getMessage());
+        }
     }
 }

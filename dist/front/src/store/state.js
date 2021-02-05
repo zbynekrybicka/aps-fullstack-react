@@ -3,20 +3,15 @@ export default {
     "preloader": false,
     "lang": [
         {
+            "langs": {
+                "cz": "Czech",
+                "en": "English"
+            },
             "loginForm": {
-                "roles": [
-                    "Obchodn\u00edk",
-                    "Mana\u017eer",
-                    "Administr\u00e1tor"
-                ],
                 "header": "P\u0159ihla\u0161ovac\u00ed formul\u00e1\u0159",
                 "username": "P\u0159ihla\u0161ovac\u00ed jm\u00e9no",
                 "password": "Heslo",
                 "login": "P\u0159ihl\u00e1sit"
-            },
-            "langs": {
-                "cz": "Czech",
-                "en": "English"
             },
             "menu": {
                 "contact": "Kontakty",
@@ -29,23 +24,23 @@ export default {
                 "phone": "Telefon",
                 "email": "E-mail",
                 "save": "Ulo\u017eit"
+            },
+            "selectedCampaign": {
+                "cancel": "Zru\u0161it",
+                "name": "N\u00e1zev",
+                "save": "Ulo\u017eit"
             }
         },
         {
+            "langs": {
+                "cz": "\u010cesky",
+                "en": "Anglicky"
+            },
             "loginForm": {
-                "roles": [
-                    "Salesman",
-                    "Manager",
-                    "Admin"
-                ],
                 "header": "Login form",
                 "username": "Username",
                 "password": "Password",
                 "login": "Sign in"
-            },
-            "langs": {
-                "cz": "\u010cesky",
-                "en": "Anglicky"
             },
             "menu": {
                 "contact": "Contacts",
@@ -57,6 +52,11 @@ export default {
                 "name": "Name",
                 "phone": "Phone",
                 "email": "E-mail",
+                "save": "Save"
+            },
+            "selectedCampaign": {
+                "cancel": "Cancel",
+                "name": "Name",
                 "save": "Save"
             }
         }
@@ -83,7 +83,8 @@ export default {
             }
         },
         "manager": {
-            "contact": []
+            "contact": [],
+            "campaign": []
         }
     },
     "selectedContact": {
@@ -91,5 +92,9 @@ export default {
         "name": "",
         "phone": "",
         "email": ""
+    },
+    "selectedCampaign": {
+        "id": null,
+        "name": ""
     }
 }

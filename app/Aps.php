@@ -69,12 +69,6 @@ class Aps
                 (array) $service);
         }
 
-        $this->saveTemplate(
-            __DIR__ . '/templates/style.php',
-            __DIR__ . '/../dist/front/src/index.css',
-            [ 'style' => (array) $data->style ]
-        );
-
     }
 
 

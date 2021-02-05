@@ -5,16 +5,16 @@ export const reducer = createSlice({
     name: 'data',
     initialState,
     reducers: {
-        switchLangCz: (state, action) => {
+        CzLangReducer: (state, action) => {
             state.activeLang = 0
         },
-        switchLangEn: (state, action) => {
+        EnLangReducer: (state, action) => {
             state.activeLang = 1
         },
-        setlangLoginFormUsername: (state, action) => {
+        setLoginFormUsername: (state, action) => {
             state.loginForm.username = action.payload
         },
-        setlangLoginFormPassword: (state, action) => {
+        setLoginFormPassword: (state, action) => {
             state.loginForm.password = action.payload
         },
         preloaderOn: (state, action) => {
@@ -46,13 +46,13 @@ export const reducer = createSlice({
         ContactCancelReducer: (state, action) => {
             state.selectedContact.id = null
         },
-        setlangSelectedContactName: (state, action) => {
+        setSelectedContactName: (state, action) => {
             state.selectedContact.name = action.payload
         },
-        setlangSelectedContactPhone: (state, action) => {
+        setSelectedContactPhone: (state, action) => {
             state.selectedContact.phone = action.payload
         },
-        setlangSelectedContactEmail: (state, action) => {
+        setSelectedContactEmail: (state, action) => {
             state.selectedContact.email = action.payload
         },
         putContactSuccess: (state, action) => {
@@ -60,6 +60,21 @@ export const reducer = createSlice({
             state.selectedContact.id = null
         },
         putContactError: (state, action) => {
+        },
+        selectCampaign: (state, action) => {
+            state.selectedCampaign = action.payload
+        },
+        CampaignCancelReducer: (state, action) => {
+            state.selectedCampaign.id = null
+        },
+        setSelectedCampaignName: (state, action) => {
+            state.selectedCampaign.name = action.payload
+        },
+        putCampaignSuccess: (state, action) => {
+            state.appData.manager.campaign[state.appData.manager.campaign.findIndex(item => state.selectedCampaign.id === item.id)] = Object.assign({}, state.selectedCampaign)
+            state.selectedCampaign.id = null
+        },
+        putCampaignError: (state, action) => {
         },
     },
 });

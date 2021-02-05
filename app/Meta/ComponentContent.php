@@ -78,7 +78,7 @@ class ComponentContent
             if ($attribute == 'store') {
                 list($beginValue) = explode('(', $value);
                 $stateKey = explode('.', $beginValue);
-                $stateKey = 'lang' . implode(array_map('ucfirst', $stateKey));
+                $stateKey = implode(array_map('ucfirst', $stateKey));
                 $this->attributes->defaultValue = $stateKey;
                 $this->attributes->onInput = 'e => dispatch(set' . $stateKey . '(e.target.value))';
                 $template->addState($value, '');

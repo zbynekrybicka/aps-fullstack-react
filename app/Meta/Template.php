@@ -28,9 +28,6 @@ class Template
     /** @var string[] */
     private $mf = [];
 
-    /** @var Style $style */
-    private $style;
-
     /**
      * Template constructor.
      * @param $meta
@@ -55,7 +52,6 @@ class Template
             'actions' => array_map(function (Action $action) { return $action->export(); }, $this->actions),
             'routes' => array_map(function (Route $route) { return $route->export(); }, $this->routes),
             'services' => array_map(function (Service $service) { return $service->export(); }, $this->services),
-            'style' => $this->style->export(),
         ];
     }
 
@@ -67,8 +63,7 @@ class Template
     {
         $this->state = new State($this->meta->state);
         Config::load($this->meta->config);
-        $this->style = new Style();
-        $this->loadSubcomponents($this->meta->content, $this->style);
+        $this->loadSubcomponents($this->meta->content);
     }
 
 
@@ -77,20 +72,20 @@ class Template
      * @param array $content
      * @param Component|null $component
      */
-    private function loadSubcomponents(array $content, Style $style, Component $component = null)
+    private function loadSubcomponents(array $content, Component $component = null)
     {
         foreach ($content as $subComponent) {
             if ($component) {
-                $this->loadSubComponents($subComponent->helperComponents, $style);
+                $this->loadSubComponents($subComponent->helperComponents);
                 foreach ($subComponent->helperComponents as $helperComponent) {
                     $component->addHelperComponent($helperComponent->title);
                 }
                 $component->addContent($subComponent, $this);
             }
             if ($subComponent->title === ucfirst($subComponent->title)) {
-                $newComponent = $this->loadComponent($subComponent, $style);
+                $newComponent = $this->loadComponent($subComponent);
                 if (isset($subComponent->content)) {
-                    $this->loadSubcomponents($subComponent->content, $style, $newComponent);
+                    $this->loadSubcomponents($subComponent->content, $newComponent);
                 }
             }
         }
@@ -102,9 +97,8 @@ class Template
      * @param object $component
      * @return Component
      */
-    private function loadComponent($component, Style $style)
+    private function loadComponent($component)
     {
-        $style->addStyle($component->title, $component->style);
         $newComponent = new Component($component->title, $component->props);
         $this->components[] = $newComponent;
         return $newComponent;

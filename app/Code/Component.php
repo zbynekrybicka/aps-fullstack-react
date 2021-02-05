@@ -8,14 +8,12 @@ class Component
     const TABLET = 'tablet';
     const PC = 'pc';
 
-    private static $lastListItemComponent;
     private static $list;
 
     private $title;
     private $content;
     private $attributes;
     private $events;
-    private $style;
     private $helperComponents = [];
     private $props = [];
 
@@ -56,22 +54,11 @@ class Component
         return $event;
     }
 
-    /**
-     * @param $attribute
-     * @param $value
-     * @param string $mode
-     * @return Component
-     */
-    public function style($attribute, $value, $mode = self::MOBILE) {
-        $this->style[$mode]->{$attribute} = $value;
-        return $this;
-    }
 
     public function export()
     {
         $result = (object) [
             'title' => $this->title,
-            'style' => (object) $this->style,
             'props' => $this->props,
             'helperComponents' => array_map(function (Component $component) { return $component->export(); }, $this->helperComponents)
         ];
@@ -102,9 +89,6 @@ class Component
     public function input($title, $type, $store, $translations, $onEnter = null)
     {
         $input = $this->component($title)
-            ->style('width', '100%')
-            ->style('display', 'flex')
-            ->style('margin-bottom', '15px')
             ->component('input')
             ->attribute('type', "'$type'")
             ->attribute('store', $store)
@@ -220,7 +204,6 @@ class Component
             ->attribute('text', $store . '.map((item, i) => <' . $component . 'Container key={\'' . $component . '\' + i} item={item} />)')
             ->helperComponent($component . 'Container')
             ->prop('item')
-            ->style('display', 'table-row')
             ->component('div')
             ->attribute('className', "'list-row'");
         self::$list = $list;
@@ -251,27 +234,30 @@ class Component
     }
 
     /**
-     * @param $string
+     * @param $component
      * @return Component
      */
-    public function listItem($string)
+    public function listItem($component)
     {
-        self::$lastListItemComponent = $this;
-        return $this->component($string)
+        return $this->component($component)
             ->attribute('item', 'item')
             ->prop('item');
     }
 
     /**
+     * @param $component
      * @param $expression
      * @return Component
      */
-    public function listItemText($expression)
+    public function listItemText($component, $expression)
     {
-        $this->component('div')
+        $this->component($component)
+            ->attribute('item', 'item')
+            ->prop('item')
+            ->component('div')
             ->attribute('text', $expression)
             ->attribute('className', "'list-cell'");
-        return self::$lastListItemComponent;
+        return $this;
     }
 
     public function text($expression)
@@ -286,6 +272,29 @@ class Component
         $this->button($title, $langStore, $translations, $class)
             ->clickReducer($title . 'Reducer', $reducer);
         return $this;
+    }
+
+    /**
+     * @param $element
+     * @param $lang
+     * @return Component
+     */
+    public function langElement($element, $lang)
+    {
+        $this->component($element)
+            ->attribute('lang', $lang);
+        return $this;
+    }
+
+    public function saveItemButton($component, $store)
+    {
+        $this->button($component. 'Save', 'selected' . $component . '.save', ['Uložit', 'Save'], 'green')
+        ->ajaxClick('put' . $component, 'put', '/' . lcfirst($component), 'selected' . $component, lcfirst($component), [], [])
+        ->saveItemReducer('selected' . $component, $store, ['state.selected' . $component. '.id = null'])
+        ->service()
+        ->resource('rest', 'Rest')
+        ->restMethod('put', lcfirst($component));
+
     }
 
 
