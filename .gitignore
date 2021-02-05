@@ -1,0 +1,7 @@
+.idea/*
+vendor/*
+json/*
+dist/db/*
+dist/api/vendor/*
+dist/front/node_modules/*
+dist/front/build/*

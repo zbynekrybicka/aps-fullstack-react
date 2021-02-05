@@ -1,0 +1,1 @@
+export default <?=json_encode($state, JSON_PRETTY_PRINT); ?>
