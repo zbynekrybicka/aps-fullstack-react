@@ -51,7 +51,7 @@ class Component
             'title' => $this->title,
             'state' => $this->state,
             'reducers' => $this->reducers,
-            'actions' => $this->actions,
+            'actions' => array_keys($this->actions),
             'props' => $this->props,
             'components' => $this->components,
             'content' => array_map(function (ComponentContent $content) { return $content->export(); }, $this->content)
@@ -98,7 +98,7 @@ class Component
      */
     public function action($title)
     {
-        $this->actions[] = $title;
+        $this->actions[$title] = true;
     }
 
 
@@ -107,6 +107,11 @@ class Component
      */
     public function component($title) {
         $this->components[] = $title;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
     }
 
 

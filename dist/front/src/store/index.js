@@ -5,6 +5,24 @@ export const reducer = createSlice({
     name: 'data',
     initialState,
     reducers: {
+        preloaderOn: (state) => {
+            state.preloader = true
+        },
+        preloaderOff: (state) => {
+            state.preloader = false
+        },
+        setLoginFormUsername: (state, action) => {
+             state.loginForm.username = action.payload
+        },
+        setLoginFormPassword: (state, action) => {
+             state.loginForm.password = action.payload
+        },
+        postLoginSuccess: (state, action) => {
+            state.authToken = action.payload.authToken
+        },
+        postLoginError: (state, action) => {
+            state.errorMessage = 'Přihlášení nebylo úspěšné. Zkontrolujte přihlašovací údaje.'
+        },
     },
 });
 

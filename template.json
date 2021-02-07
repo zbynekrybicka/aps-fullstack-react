@@ -2,6 +2,82 @@
     "components": [
         {
             "title": "App",
+            "state": {
+                "AuthToken": "state.data.authToken"
+            },
+            "reducers": [],
+            "actions": [],
+            "props": [],
+            "components": [
+                "LoginForm",
+                "Admin"
+            ],
+            "content": [
+                {
+                    "title": "LoginForm",
+                    "attributes": {},
+                    "open": "{!AuthToken && ",
+                    "close": " \/>}"
+                },
+                {
+                    "title": "Admin",
+                    "attributes": {},
+                    "open": "{AuthToken && ",
+                    "close": " \/>}"
+                }
+            ]
+        },
+        {
+            "title": "LoginForm",
+            "state": {
+                "loginFormUsername": "state.data.loginForm.username",
+                "loginFormPassword": "state.data.loginForm.password"
+            },
+            "reducers": [
+                "setLoginFormUsername",
+                "setLoginFormPassword"
+            ],
+            "actions": [
+                "postLogin"
+            ],
+            "props": [],
+            "components": [],
+            "content": [
+                {
+                    "title": "input",
+                    "attributes": {
+                        "type": "'text'",
+                        "placeholder": "'P\u0159ihla\u0161ovac\u00ed jm\u00e9no'",
+                        "defaultValue": "loginFormUsername",
+                        "onInput": "e => dispatch(setLoginFormUsername(e.target.value))"
+                    },
+                    "open": "",
+                    "close": " \/>"
+                },
+                {
+                    "title": "input",
+                    "attributes": {
+                        "type": "'password'",
+                        "placeholder": "'Heslo'",
+                        "defaultValue": "loginFormPassword",
+                        "onInput": "e => dispatch(setLoginFormPassword(e.target.value))"
+                    },
+                    "open": "",
+                    "close": " \/>"
+                },
+                {
+                    "title": "button",
+                    "attributes": {
+                        "className": "'blue'",
+                        "onClick": "() => dispatch(postLogin())"
+                    },
+                    "open": "",
+                    "close": ">{'P\u0159ihl\u00e1sit se'}<\/button>"
+                }
+            ]
+        },
+        {
+            "title": "Admin",
             "state": [],
             "reducers": [],
             "actions": [],
@@ -9,17 +85,84 @@
             "components": [],
             "content": [
                 {
-                    "title": "h1",
+                    "title": "div",
                     "attributes": {},
                     "open": "",
-                    "close": ">{'Hello world!!!'}<\/h1>"
+                    "close": " \/>"
                 }
             ]
         }
     ],
-    "reducers": [],
-    "state": [],
-    "actions": [],
-    "routes": [],
-    "services": []
+    "reducers": [
+        {
+            "title": "setLoginFormUsername",
+            "content": [
+                " state.loginForm.username = action.payload"
+            ]
+        },
+        {
+            "title": "setLoginFormPassword",
+            "content": [
+                " state.loginForm.password = action.payload"
+            ]
+        },
+        {
+            "title": "postLoginSuccess",
+            "content": [
+                "state.authToken = action.payload.authToken"
+            ]
+        },
+        {
+            "title": "postLoginError",
+            "content": [
+                "state.errorMessage = 'P\u0159ihl\u00e1\u0161en\u00ed nebylo \u00fasp\u011b\u0161n\u00e9. Zkontrolujte p\u0159ihla\u0161ovac\u00ed \u00fadaje.'"
+            ]
+        }
+    ],
+    "state": {
+        "authToken": null,
+        "loginForm": {
+            "username": "",
+            "password": ""
+        }
+    },
+    "actions": [
+        {
+            "title": "postLogin",
+            "method": "post",
+            "url": "http:\/\/localhost:8080\/login",
+            "authorization": false,
+            "before": "preloaderOn",
+            "after": "preloaderOff",
+            "success": "postLoginSuccess",
+            "error": "postLoginError",
+            "store": "loginForm"
+        }
+    ],
+    "routes": [
+        {
+            "method": "post",
+            "url": "\/login",
+            "service": {
+                "className": "userAuth",
+                "method": "postLogin"
+            }
+        }
+    ],
+    "services": [
+        {
+            "title": "userAuth",
+            "resources": {
+                "userAuth": "UserAuthResource"
+            },
+            "methods": [
+                {
+                    "title": "postLogin",
+                    "lines": [
+                        "return $this->userAuth->login($request); "
+                    ]
+                }
+            ]
+        }
+    ]
 }

@@ -13,10 +13,9 @@ class State
 
     /**
      * State constructor.
-     * @param array|object $data
      */
-    public function __construct($data) {
-        $this->state = new Dot($data);
+    public function __construct() {
+        $this->state = new Dot([]);
     }
 
 
@@ -39,5 +38,9 @@ class State
         if (!$this->state->has($state)) {
             $this->state->add($state, $value);
         }
+    }
+
+    public function get($state) {
+        return $this->state->get($state);
     }
 }

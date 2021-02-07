@@ -1,18 +1,14 @@
 <?php
-use App\Code\FullStack;
+use App\Relations\FullStack;
+use App\Process;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
 $fullStack = new FullStack();
+$component = new Process($fullStack);
 
-// App
-    // LoginForm
-    // Admin
-        // Operator
-        // Manager
-            // Contacts
-            // Campaigns
-            // Calls
-
+$component->App();
+$component->LoginForm();
+$component->Admin();
 
 $fullStack->execute();

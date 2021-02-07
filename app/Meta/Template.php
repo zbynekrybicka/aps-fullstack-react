@@ -13,7 +13,7 @@ class Template
     /** @var Reducer[]  */
     private $reducers = [];
 
-    /** @var  State */
+    /** @var State $state */
     private $state;
 
     /** @var Action[]  */
@@ -27,7 +27,7 @@ class Template
 
 
     public function __construct() {
-        $this->state = new Dot([]);
+        $this->state = new State();
     }
 
     /**
@@ -38,7 +38,7 @@ class Template
         return (object) [
             'components' => array_map(function (Component $component) { return $component->export(); }, $this->components),
             'reducers' => array_map(function (Reducer $reducer) { return $reducer->export(); }, $this->reducers),
-            'state' => $this->state->all(),
+            'state' => $this->state->export(),
             'actions' => array_map(function (Action $action) { return $action->export(); }, $this->actions),
             'routes' => array_map(function (Route $route) { return $route->export(); }, $this->routes),
             'services' => array_map(function (Service $service) { return $service->export(); }, $this->services),
@@ -99,5 +99,6 @@ class Template
     public function state($path, $value) {
         $this->state->add($path, $value);
     }
+
 
 }

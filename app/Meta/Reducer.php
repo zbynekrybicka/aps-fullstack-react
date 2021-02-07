@@ -33,7 +33,7 @@ class Reducer
         ];
     }
 
-    public function addLine($line) {
+    public function line($line) {
         $this->content[] = $line;
     }
 

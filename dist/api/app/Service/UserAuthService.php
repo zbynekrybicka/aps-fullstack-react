@@ -7,7 +7,7 @@ use App\Resource\UserAuthResource;
 
 class UserAuthService
 {
-    private $userAuthResource;
+    private $userAuth;
 
     public static function get() {
         static $self;
@@ -18,11 +18,11 @@ class UserAuthService
     }
 
     public function __construct() {
-        $this->userAuthResource = UserAuthResource::get();
+        $this->userAuth = UserAuthResource::get();
     }
 
     public function postLogin(Request $request) {
-        return $this->userAuthResource->login($request);
+        return $this->userAuth->login($request); 
     }
 
 }
