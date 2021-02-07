@@ -30,8 +30,8 @@ class Route
     {
         $this->method = $content->method;
         $this->url = $content->url;
-        $this->serviceClassName = $content->service->title;
-        $this->serviceMethod = $content->service->method->title;
+        $this->serviceClassName = $content->serviceClassName;
+        $this->serviceMethod = $content->serviceMethod;
     }
 
 

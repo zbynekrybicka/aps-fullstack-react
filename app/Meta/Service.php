@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zbyne
- * Date: 31.01.2021
- * Time: 13:18
- */
 
 namespace App\Meta;
 
@@ -19,14 +13,15 @@ class Service
     private $methods = [];
 
 
+    /** @var array $resources */
+    private $resources = [];
+
     /**
      * Service constructor.
      * @param string $title
-     * @param object $resources
      */
-    public function __construct($title, $resources) {
+    public function __construct($title) {
         $this->title = $title;
-        $this->resources = $resources;
     }
 
 
@@ -44,23 +39,24 @@ class Service
 
 
     /**
-     * @param string $title
-     * @return bool
+     *
+     * @param $title
+     * @return ServiceMethod
      */
-    public function isTitle($title)
+    public function method($title)
     {
-        return $this->title == $title;
+        $method = new ServiceMethod($title);
+        $this->methods[] = $method;
+        return $method;
     }
 
 
     /**
-     *
-     * @param object $data
+     * @param $attribute
+     * @param $resource
      */
-    public function addMethod($data)
-    {
-        $method = new ServiceMethod($data->title, $data->content);
-        $this->methods[] = $method;
+    public function resource($attribute, $resource) {
+        $this->resources[$attribute] = $resource;
     }
 
 }

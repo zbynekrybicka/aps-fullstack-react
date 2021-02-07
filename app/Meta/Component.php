@@ -25,7 +25,7 @@ class Component
     private $actions = [];
 
     /** @var array $helperComponents */
-    private $helperComponents = [];
+    private $components = [];
 
     /** @var array $props */
     private $props = [];
@@ -34,6 +34,7 @@ class Component
     /**
      * Component constructor.
      * @param $title
+     * @param $props
      */
     public function __construct($title, $props) {
         $this->title = $title;
@@ -52,7 +53,7 @@ class Component
             'reducers' => $this->reducers,
             'actions' => $this->actions,
             'props' => $this->props,
-            'helperComponents' => $this->helperComponents,
+            'components' => $this->components,
             'content' => array_map(function (ComponentContent $content) { return $content->export(); }, $this->content)
         ];
     }
@@ -60,28 +61,23 @@ class Component
 
     /**
      *
-     * @param object $subComponent data
-     * @param Template $template
+     * @param $title
+     * @return ComponentContent
      */
-    public function addContent($subComponent, Template $template)
+    public function content($title)
     {
-        $content = new ComponentContent($subComponent->title);
-        if (isset($subComponent->attributes)) {
-            $content->addAttributes($subComponent->attributes, $template, $this);
-        }
-        if (isset($subComponent->events)) {
-            $content->addEvents($subComponent->events, $template, $this);
-        }
+        $content = new ComponentContent($title);
         $this->content[] = $content;
+        return $content;
     }
 
 
     /**
      *
-     * @param string $state
      * @param string $stateKey
+     * @param string $state
      */
-    public function addState($state, $stateKey)
+    public function state($stateKey, $state)
     {
         $this->state[$stateKey] = $state;
     }
@@ -89,18 +85,18 @@ class Component
 
     /**
      *
-     * @param string $reducer
+     * @param string $title
      */
-    public function addReducer($reducer)
+    public function reducer($title)
     {
-        $this->reducers[] = $reducer;
+        $this->reducers[] = $title;
     }
 
 
     /**
      * @param string $title
      */
-    public function addAction($title)
+    public function action($title)
     {
         $this->actions[] = $title;
     }
@@ -109,8 +105,9 @@ class Component
     /**
      * @param $title
      */
-    public function addHelperComponent($title) {
-        $this->helperComponents[] = $title;
+    public function component($title) {
+        $this->components[] = $title;
     }
+
 
 }

@@ -3,8 +3,14 @@
 namespace App;
 
 use FastRoute;
-<?php foreach ($routes as $route) { ?>
-use App\Service\<?=ucfirst($route->service->className); ?>Service;
+<?php
+$services = [];
+foreach ($routes as $route) {
+    $services[$route->service->className] = true;
+}
+$services = array_keys($services);
+foreach ($services as $service) { ?>
+use App\Service\<?=ucfirst($service); ?>Service;
 <?php } ?>
 
 function route($method, $url, $headers, $data) {
@@ -12,8 +18,8 @@ function route($method, $url, $headers, $data) {
     header('Access-Control-Allow-Headers: Content-type, Authorization');
     header('Access-Control-Allow-Methods: POST, PUT, GET, OPTIONS');
     $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-<?php foreach ($routes as $route) { ?>
-    $<?=$route->service->className; ?>Service = <?=ucfirst($route->service->className); ?>Service::get();
+<?php foreach ($services as $service) { ?>
+        $<?=$service; ?>Service = <?=ucfirst($service); ?>Service::get();
 <?php } ?>
 <?php foreach ($routes as $route) { ?>
         $r->addRoute(

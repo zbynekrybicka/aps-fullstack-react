@@ -1,0 +1,83 @@
+* {
+  transition: background-color 0.3s linear, color 0.3s linear;
+}
+body {
+  background-color: #CCC;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+body div.App {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFF;
+  padding: 15px;
+}
+@media (max-width: 450px) {
+  body div.App {
+    width: calc(100% - 30px);
+  }
+}
+@media (min-width: 451px) and (max-width: 1200px) {
+  body div.App {
+    width: calc(100% - 30px);
+  }
+}
+@media (min-width: 1201px) {
+  body div.App {
+    width: 1200px;
+  }
+}
+body button {
+  padding: 7px 25px;
+  border: 0;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #DADADA;
+  cursor: pointer;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+body button:hover {
+  background-color: #8C8C8C;
+}
+body button.blue {
+  background-color: #80bfff;
+}
+body button.blue:hover {
+  background-color: #2f7ac5;
+}
+body button.green {
+  background-color: #5bbd49;
+}
+body button.green:hover {
+  background-color: #a7ef9a;
+}
+body input[type=text],
+body input[type=password] {
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: block;
+  width: calc(100% - 10px);
+  margin-bottom: 15px;
+}
+body .list {
+  display: table;
+  width: 100%;
+  margin-top: 15px;
+}
+body .list .list-row {
+  display: table-row;
+  cursor: pointer;
+}
+body .list .list-row:hover {
+  background-color: #e2e2e2;
+}
+body .list .list-row div {
+  display: contents;
+}
+body .list .list-row .list-cell {
+  display: table-cell;
+  padding: 15px;
+  border-top: 1px solid black;
+}

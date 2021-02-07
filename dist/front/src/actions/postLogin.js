@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { reducer } from '../store';
-const { preloaderOn, preloaderOff, postLoginSuccess, postLoginError } = reducer.actions;
+const { preloaderOn, preloaderOff, postLoginSuccess, postLoginFail } = reducer.actions;
 
 export default () => (dispatch, state) => {
     const data = state().data.loginForm
@@ -13,7 +13,7 @@ export default () => (dispatch, state) => {
             dispatch(preloaderOff())
         })
         .catch(({ response }) => {
-            dispatch(postLoginError(response))
+            dispatch(postLoginFail(response))
             dispatch(preloaderOff())
         });
 };

@@ -34,19 +34,26 @@ class Action
     /**
      * Action constructor.
      * @param string $title
-     * @param object $content
+     * @param $method
+     * @param $url
+     * @param $authorization
+     * @param $before
+     * @param $after
+     * @param $success
+     * @param $error
+     * @param $store
      */
-    public function __construct($title, $content)
+    public function __construct($title, $method, $url, $authorization, $before, $after, $success, $error, $store)
     {
         $this->title = $title;
-        $this->method = $content->method;
-        $this->url = Config::$config->apiUrl . $content->url;
-        $this->store = $content->data;
-        $this->authorization = $content->authorization;
-        $this->before = $content->before->title;
-        $this->after = $content->after->title;
-        $this->success = $content->success->title;
-        $this->error = $content->error->title;
+        $this->method = $method;
+        $this->url = $url;
+        $this->authorization = $authorization;
+        $this->before = $before;
+        $this->after = $after;
+        $this->success = $success;
+        $this->error = $error;
+        $this->store = $store;
     }
 
     /**

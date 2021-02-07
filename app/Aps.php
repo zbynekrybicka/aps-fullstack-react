@@ -2,25 +2,20 @@
 namespace App;
 
 use App\Meta\Template;
-use App\Code\FullStack;
-use App\Code\Code;
 
 class Aps
 {
 
-    /** @var Code $code */
-    private $code;
+    /** @var Template $template */
+    private $template;
 
     /**
      *
      */
     public function execute() {
-        $meta = $this->code->export();
-        $data = $this->metaToTemplate($meta);
+        $data = $this->template->export();
+        file_put_contents(__DIR__ . '/../template.json', json_encode($data, JSON_PRETTY_PRINT));
         $this->templatesToSources($data);
-        // file_put_contents(__DIR__ . '/../json/meta.json', json_encode($meta, JSON_PRETTY_PRINT));
-        file_put_contents(__DIR__ . '/../json/template.json', json_encode($data, JSON_PRETTY_PRINT));
-        file_put_contents(__DIR__ . '/../json/meta.json', json_encode($meta, JSON_PRETTY_PRINT));
     }
 
 
@@ -88,22 +83,11 @@ class Aps
 
     /**
      *
-     * @param object $meta
-     * @return object
+     * @return Template
      */
-    private function metaToTemplate($meta)
-    {
-        $template = new Template($meta);
-        return $template->export();
-    }
-
-    /**
-     *
-     * @return FullStack
-     */
-    public function fullStack() {
-        $this->code = new FullStack();
-        return $this->code;
+    public function template() {
+        $this->template = new Template();
+        return $this->template;
     }
 
 }

@@ -15,11 +15,11 @@ class <?=ucfirst($title); ?>Service
 <?php } ?>
 
     public static function get() {
-        static $<?=lcfirst($title); ?>Service;
-        if (!$<?=lcfirst($title); ?>Service) {
-            $<?=lcfirst($title); ?>Service = new <?=ucfirst($title); ?>Service();
+        static $self;
+        if (!$self) {
+            $self = new self();
         }
-        return $<?=lcfirst($title); ?>Service;
+        return $self;
     }
 
     public function __construct() {

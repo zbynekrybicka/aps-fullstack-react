@@ -6,17 +6,17 @@ import Manager from './Manager';
 
 const {  } = reducer.actions;
 
-const UserRoleSelector = state => state.data.user.role;
+const isOperatorSelector = state => state.data.appData.operator;
+const isManagerSelector = state => state.data.appData.manager;
 
 function Admin({}) {
   const dispatch = useDispatch();
-  const UserRole = useSelector(UserRoleSelector);
+  const isOperator = useSelector(isOperatorSelector);
+  const isManager = useSelector(isManagerSelector);
   return (
     <div className="Admin">
-        {UserRole === 1 && <Operator
-        />}
-        {UserRole === 2 && <Manager
-        />}
+        {(!!isOperator) && <Operator/>}
+        {(!!isManager) && <Manager/>}
     </div>
   );
 }

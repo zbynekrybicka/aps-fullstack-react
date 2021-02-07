@@ -1,27 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zbyne
- * Date: 05.02.2021
- * Time: 15:34
- */
-
 namespace App\Resource;
 
 
 use App\Request;
 use App\Response;
 
-class UserAuth
+class UserAuthResource
 {
 
-    public static function get()
-    {
-        static $authService;
-        if (!$authService) {
-            $authService = new UserAuth();
+    public static function get() {
+        static $self;
+        if (!$self) {
+            $self = new self();
         }
-        return $authService;
+        return $self;
     }
 
     private function __construct()
@@ -57,12 +49,20 @@ class UserAuth
 
             case 2:
 
-                return [ 'manager' => [
-                        'contact' => $this->db->select('*')->from('contact')->fetchAll(),
-                        'campaign' => $this->db->select('*')->from('campaign')->fetchAll(),
-                        'call' => $this->db->select('*')->from('call')->fetchAll(),
+                return [
+                    'manager' => [
+                        'contact' => [
+                            'items' => $this->db->select('*')->from('contact')->fetchAll()
+                        ],
+                        'campaign' => [
+                            'items' => $this->db->select('*')->from('campaign')->fetchAll()
+                        ],
+                        'call' => [
+                            'items' => $this->db->select('*')->from('call')->fetchAll(),
+                        ]
                     ]
                 ];
         }
     }
+
 }

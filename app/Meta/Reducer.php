@@ -10,17 +10,15 @@ class Reducer
 
 
     /** @var array $content */
-    private $content;
+    private $content = [];
 
 
     /**
      * Reducer constructor.
      * @param string $title
-     * @param array $content
      */
-    public function __construct($title, array $content) {
+    public function __construct($title) {
         $this->title = $title;
-        $this->content = $content;
     }
 
 
@@ -33,6 +31,10 @@ class Reducer
             'title' => $this->title,
             'content' => $this->content
         ];
+    }
+
+    public function addLine($line) {
+        $this->content[] = $line;
     }
 
     public function getTitle()

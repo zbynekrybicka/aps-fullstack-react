@@ -1,0 +1,25 @@
+{
+    "components": [
+        {
+            "title": "App",
+            "state": [],
+            "reducers": [],
+            "actions": [],
+            "props": [],
+            "components": [],
+            "content": [
+                {
+                    "title": "h1",
+                    "attributes": {},
+                    "open": "",
+                    "close": ">{'Hello world!!!'}<\/h1>"
+                }
+            ]
+        }
+    ],
+    "reducers": [],
+    "state": [],
+    "actions": [],
+    "routes": [],
+    "services": []
+}

@@ -17,11 +17,9 @@ class ServiceMethod
     /**
      * ServiceMethod constructor.
      * @param string $title
-     * @param array $lines
      */
-    public function __construct($title, array $lines) {
+    public function __construct($title) {
         $this->title = $title;
-        $this->lines = $lines;
     }
 
 
@@ -34,5 +32,9 @@ class ServiceMethod
             'title' => $this->title,
             'lines' => $this->lines,
         ];
+    }
+
+    public function line($line) {
+        $this->lines[] = $line;
     }
 }

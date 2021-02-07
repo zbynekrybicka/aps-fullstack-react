@@ -2,33 +2,12 @@
 namespace App;
 
 use FastRoute;
-use App\Service\AuthService;
-use App\Service\ContactService;
-use App\Service\CampaignService;
 
 function route($method, $url, $headers, $data) {
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Headers: Content-type, Authorization');
     header('Access-Control-Allow-Methods: POST, PUT, GET, OPTIONS');
     $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $authService = AuthService::get();
-    $contactService = ContactService::get();
-    $campaignService = CampaignService::get();
-        $r->addRoute(
-            'POST', 
-            '/login', 
-            [ $authService, 'postLogin']
-        );
-        $r->addRoute(
-            'PUT', 
-            '/contact', 
-            [ $contactService, 'putContact']
-        );
-        $r->addRoute(
-            'PUT', 
-            '/campaign', 
-            [ $campaignService, 'putCampaign']
-        );
     });
     $routeInfo = $dispatcher->dispatch($method, $url);
     switch ($routeInfo[0]) {

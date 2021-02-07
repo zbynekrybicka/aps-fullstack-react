@@ -1,14 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reducer } from '../store';
-<?php foreach ($helperComponents as $component) { ?>
+<?php foreach ($components as $component) { ?>
 import <?=$component; ?> from './<?=$component; ?>';
-
-<?php } ?>
-<?php foreach ($content as $element) { ?>
-<?php if ($element->title === ucfirst($element->title)) { ?>
-import <?=$element->title; ?> from './<?=$element->title; ?>';
-<?php } ?>
 <?php } ?>
 <?php foreach ((array) $actions as $action) { ?>
 import <?=$action; ?> from '../actions/<?=$action; ?>.js';
@@ -38,6 +32,7 @@ function <?=$title; ?>({<?=implode(', ', $props); ?>}) {
   return (
     <div className="<?=$title; ?>">
 <?php foreach ($content as $element) { ?>
+<?php if ((array) $element->attributes) { ?>
         <?=$element->open; ?><<?=$element->title; ?>
 
 <?php foreach ((array) $element->attributes as $attribute => $value) { ?>
@@ -45,6 +40,10 @@ function <?=$title; ?>({<?=implode(', ', $props); ?>}) {
 <?php } ?>
         <?=$element->close; ?>
 
+<?php } else { ?>
+        <?=$element->open; ?><<?=$element->title; ?><?=$element->close; ?>
+
+<?php } ?>
 <?php } ?>
     </div>
   );

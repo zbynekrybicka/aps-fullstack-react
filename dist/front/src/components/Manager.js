@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reducer } from '../store';
-import ManagerMenu from './ManagerMenu';
-import ContactSection from './ContactSection';
-import CampaignSection from './CampaignSection';
-import CallSection from './CallSection';
+import Menu from './Menu';
+import Contacts from './Contacts';
+import Campaigns from './Campaigns';
+import Calls from './Calls';
 
 const {  } = reducer.actions;
 
@@ -15,14 +15,10 @@ function Manager({}) {
   const Section = useSelector(SectionSelector);
   return (
     <div className="Manager">
-        <ManagerMenu
-         />
-        {Section === 0 && <ContactSection
-        />}
-        {Section === 1 && <CampaignSection
-        />}
-        {Section === 2 && <CallSection
-        />}
+        <Menu />
+        {(Section === 1) && <Contacts/>}
+        {(Section === 2) && <Campaigns/>}
+        {(Section === 3) && <Calls/>}
     </div>
   );
 }

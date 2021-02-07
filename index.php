@@ -1,28 +1,18 @@
 <?php
-use App\Aps;
-use App\Process;
+use App\Code\FullStack;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$process = new Process();
+$fullStack = new FullStack();
 
-$aps = new Aps();
-$app = $process->init($aps);
-    $process->Langs($app);
-    $process->LoginForm($app);
-
-$admin = $process->Admin($app);
-
-    $operator = $process->Operator($admin);
-        $process->ClientData($operator);
-        $process->CallHistory($operator);
-        $process->CallScript($operator);
-
-    $manager = $process->Manager($admin);
-        $process->ManagerMenu($manager);
-        $process->ContactSection($manager);
-        $process->CampaignSection($manager);
-        $process->CallSection($manager);
+// App
+    // LoginForm
+    // Admin
+        // Operator
+        // Manager
+            // Contacts
+            // Campaigns
+            // Calls
 
 
-$aps->execute();
+$fullStack->execute();

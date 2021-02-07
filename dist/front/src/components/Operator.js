@@ -1,25 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reducer } from '../store';
-import ClientData from './ClientData';
-import CallHistory from './CallHistory';
-import CallScript from './CallScript';
 
 const {  } = reducer.actions;
 
+const langoperatorHeaderSelector = state => state.data.lang[state.data.activeLang].operator.header;
 
 function Operator({}) {
   const dispatch = useDispatch();
-  return (
-    <div className="Operator">
-        <ClientData
-         />
-        <CallHistory
-         />
-        <CallScript
-         />
-    </div>
-  );
+  const langoperatorHeader = useSelector(langoperatorHeaderSelector);
+  return (<h1
+        >{langoperatorHeader}</h1>);
 }
 
 export default Operator;
