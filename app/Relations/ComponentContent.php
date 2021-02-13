@@ -40,10 +40,21 @@ class ComponentContent
         return $this;
     }
 
-    public function state($attribute, $variable, $state, $defaultValue = '') {
-        $this->metaComponent->state($variable, 'state.data.' . $state);
+
+    /**
+     * @param $attribute
+     * @param $variable
+     * @param $state
+     * @param string $defaultValue
+     * @return ComponentContent
+     */
+    public function state($attribute, $variable, $state = '', $defaultValue = '') {
+        if ($state) {
+            $this->metaComponent->state($variable, 'state.data.' . $state);
+            $this->template->state($state, $defaultValue);
+        }
         $this->metaContent->attribute($attribute, $variable);
-        $this->template->state($state, $defaultValue);
+        return $this;
     }
 
     public function eventReducer($type, $reducer, $lines = [], $params = 'e.target.value') {
@@ -86,7 +97,7 @@ class ComponentContent
      * @return ComponentContent
      */
     public function vModel($variable, $state) {
-        $this->state('defaultValue', $variable, $state);
+        $this->state('defaultValue', $variable, str_replace('state.', 'state.data.', $state));
         $this->eventReducer('input', 'set' . ucfirst($variable), [' state.' . $state . ' = action.payload' ]);
         return $this;
     }
@@ -108,6 +119,13 @@ class ComponentContent
     public function content($content)
     {
         $this->metaContent->content("'$content'");
+        return $this;
+    }
+
+    public function stateContent($variable, $state)
+    {
+        $this->metaContent->content($variable);
+        $this->component->state($variable, $state, '');
         return $this;
     }
 

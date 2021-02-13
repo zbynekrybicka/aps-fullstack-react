@@ -13,6 +13,7 @@ class Component
     /** @var MetaComponent */
     private $component = null;
     private $title;
+    private $initialAction = null;
 
     /**
      * Component constructor.
@@ -74,6 +75,13 @@ class Component
         $this->initComponent();
         $this->component->component($title);
         return $this->content($title);
+    }
+
+    public function initialAction($title)
+    {
+        $this->initComponent();
+        $this->component->initialAction($title);
+        return $this->action($title);
     }
 
 

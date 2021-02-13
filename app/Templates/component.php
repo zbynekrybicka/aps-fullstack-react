@@ -14,6 +14,9 @@ const <?=$value; ?>Selector = state => <?=$path; ?>;
 
 function <?=$title; ?>({<?=implode(', ', $props); ?>}) {
   const dispatch = useDispatch();
+<?php if ($initialAction) { ?>
+    dispatch(<?=$initialAction; ?>());
+<?php } ?>
 <?php foreach ($state as $value => $path) { ?>
   const <?=$value; ?> = useSelector(<?=$value; ?>Selector);
 <?php } ?>

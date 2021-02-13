@@ -30,6 +30,9 @@ class Component
     /** @var array $props */
     private $props = [];
 
+    /** @var string $initialAction */
+    private $initialAction = '';
+
 
     /**
      * Component constructor.
@@ -54,6 +57,7 @@ class Component
             'actions' => array_keys($this->actions),
             'props' => $this->props,
             'components' => $this->components,
+            'initialAction' => $this->initialAction,
             'content' => array_map(function (ComponentContent $content) { return $content->export(); }, $this->content)
         ];
     }
@@ -112,6 +116,11 @@ class Component
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function initialAction($title)
+    {
+        $this->initialAction = $title;
     }
 
 

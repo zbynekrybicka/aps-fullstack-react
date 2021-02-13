@@ -31,4 +31,17 @@ class FullStack
     public function execute() {
         $this->aps->execute();
     }
+
+
+    /**
+     * @param $state
+     * @param $defaultValue
+     * @return FullStack
+     */
+    public function state($state, $defaultValue)
+    {
+        $this->template->state($state, $defaultValue);
+        return $this;
+    }
+
 }
