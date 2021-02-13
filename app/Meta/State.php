@@ -40,7 +40,4 @@ class State
         }
     }
 
-    public function get($state) {
-        return $this->state->get($state);
-    }
 }

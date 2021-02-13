@@ -2,8 +2,6 @@
 namespace App\Meta;
 
 
-use Adbar\Dot;
-
 class Template
 {
 

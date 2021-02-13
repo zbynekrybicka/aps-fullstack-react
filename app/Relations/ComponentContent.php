@@ -2,8 +2,6 @@
 
 namespace App\Relations;
 
-
-use App\Relations\Component;
 use App\Meta\Component as MetaComponent;
 use App\Meta\ComponentContent as MetaContent;
 use App\Meta\Template;

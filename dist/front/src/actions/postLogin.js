@@ -1,11 +1,17 @@
 import axios from 'axios';
 import { reducer } from '../store';
-const { preloaderOn, preloaderOff, postLoginSuccess, postLoginError } = reducer.actions;
+const {
+    preloaderOn,
+    preloaderOff,
+    postLoginSuccess,
+    postLoginError
+} = reducer.actions;
 
 export default () => (dispatch, state) => {
     const data = state().data.loginForm
     dispatch(preloaderOn());
-    axios.post('http://localhost:8080/login', data, {
+    axios.post('http://localhost:8080/login',
+        data, {
                 
     })
         .then(({ data }) => {

@@ -5,3 +5,4 @@ dist/db/*
 dist/api/vendor/*
 dist/front/node_modules/*
 dist/front/build/*
+exportToHTML/*

@@ -7,9 +7,7 @@ import <?=$component; ?> from './<?=$component; ?>';
 <?php foreach ((array) $actions as $action) { ?>
 import <?=$action; ?> from '../actions/<?=$action; ?>.js';
 <?php } ?>
-
 const { <?=implode(', ', $reducers); ?> } = reducer.actions;
-
 <?php foreach ((array) $state as $value => $path) { ?>
 const <?=$value; ?>Selector = state => <?=$path; ?>;
 <?php } ?>
@@ -19,18 +17,8 @@ function <?=$title; ?>({<?=implode(', ', $props); ?>}) {
 <?php foreach ($state as $value => $path) { ?>
   const <?=$value; ?> = useSelector(<?=$value; ?>Selector);
 <?php } ?>
-<?php if (count($content) == 1) {
-    list($element) = $content;
-?>
-  return (<?=$element->open; ?><<?=$element->title; ?>
-
-    <?php foreach ((array) $element->attributes as $attribute => $value) { ?>
-        <?=$attribute; ?>={<?=$value; ?>}
-    <?php } ?>
-    <?=$element->close; ?>);
-<?php } else { ?>
   return (
-    <div className="<?=$title; ?>">
+    <?=(count($content) > 1) ? "<div className=\"$title\">\n" : ""; ?>
 <?php foreach ($content as $element) { ?>
 <?php if ((array) $element->attributes) { ?>
         <?=$element->open; ?><<?=$element->title; ?>
@@ -45,9 +33,6 @@ function <?=$title; ?>({<?=implode(', ', $props); ?>}) {
 
 <?php } ?>
 <?php } ?>
-    </div>
-  );
-<?php } ?>
+    <?=(count($content) > 1) ? "</div>" : ""; ?>);
 }
-
 export default <?=$title; ?>;

@@ -41,8 +41,8 @@ class Process
     public function LoginForm() {
         $component = $this->fullStack->component('LoginForm');
 
-        $this->inputText($component, 'loginFormUsername', 'loginForm.username', 'Přihlašovací jméno');
-        $this->inputPassword($component, 'loginFormPassword', 'loginForm.password', 'Heslo');
+        $this->inputText($component, 'username', 'loginForm.username', 'Přihlašovací jméno');
+        $this->inputPassword($component, 'password', 'loginForm.password', 'Heslo');
 
         $component->content('button')
             ->attribute('className', 'blue')
@@ -72,8 +72,6 @@ class Process
 
     /**
      *
-     *
-     *
      * @param Component $component
      * @param string $variable
      * @param string $store
@@ -90,9 +88,6 @@ class Process
 
 
     /**
-     *
-     *
-     *
      *
      * @param Component $component
      * @param string $variable

@@ -11,10 +11,10 @@ export const reducer = createSlice({
         preloaderOff: (state) => {
             state.preloader = false
         },
-        setLoginFormUsername: (state, action) => {
+        setUsername: (state, action) => {
              state.loginForm.username = action.payload
         },
-        setLoginFormPassword: (state, action) => {
+        setPassword: (state, action) => {
              state.loginForm.password = action.payload
         },
         postLoginSuccess: (state, action) => {

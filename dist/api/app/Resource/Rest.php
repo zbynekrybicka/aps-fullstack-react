@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zbyne
- * Date: 05.02.2021
- * Time: 21:51
- */
-
 namespace App\Resource;
 
 use App\Response;

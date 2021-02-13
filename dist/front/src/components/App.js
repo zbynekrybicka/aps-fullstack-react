@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { reducer } from '../store';
 import LoginForm from './LoginForm';
 import Admin from './Admin';
-
 const {  } = reducer.actions;
-
 const AuthTokenSelector = state => state.data.authToken;
 
 function App({}) {
@@ -15,8 +13,6 @@ function App({}) {
     <div className="App">
         {!AuthToken && <LoginForm />}
         {AuthToken && <Admin />}
-    </div>
-  );
+    </div>);
 }
-
 export default App;

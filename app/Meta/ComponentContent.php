@@ -3,8 +3,6 @@
 namespace App\Meta;
 
 
-use Adbar\Dot;
-
 class ComponentContent
 {
 
@@ -45,11 +43,6 @@ class ComponentContent
             'open' => $this->open,
             'close' => $this->close
         ];
-    }
-
-    public function addAttributes($attributes)
-    {
-        $this->attributes = $attributes;
     }
 
     public function attribute($key, $value)

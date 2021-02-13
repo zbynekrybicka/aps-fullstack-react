@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zbyne
- * Date: 07.02.2021
- * Time: 18:24
- */
 
 namespace App\Relations;
 
@@ -26,7 +20,17 @@ class Action
     }
 
     public function request($method, $url, $data, $service, $authorization = true) {
-        $this->template->action($this->title, $method, 'http://localhost:8080' . $url, $authorization, 'preloaderOn', 'preloaderOff', $this->title . 'Success', $this->title . 'Error', $data);
+        $this->template->action(
+            $this->title,
+            $method,
+            API_URL . $url,
+            $authorization,
+            'preloaderOn',
+            'preloaderOff',
+            $this->title . 'Success',
+            $this->title . 'Error',
+            $data
+        );
         $this->template->route($method, $url, $service, $this->title);
         $this->service = $service;
         return $this;

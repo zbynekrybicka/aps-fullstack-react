@@ -30,12 +30,12 @@
         {
             "title": "LoginForm",
             "state": {
-                "loginFormUsername": "state.data.loginForm.username",
-                "loginFormPassword": "state.data.loginForm.password"
+                "username": "state.data.loginForm.username",
+                "password": "state.data.loginForm.password"
             },
             "reducers": [
-                "setLoginFormUsername",
-                "setLoginFormPassword"
+                "setUsername",
+                "setPassword"
             ],
             "actions": [
                 "postLogin"
@@ -48,8 +48,8 @@
                     "attributes": {
                         "type": "'text'",
                         "placeholder": "'P\u0159ihla\u0161ovac\u00ed jm\u00e9no'",
-                        "defaultValue": "loginFormUsername",
-                        "onInput": "e => dispatch(setLoginFormUsername(e.target.value))"
+                        "defaultValue": "username",
+                        "onInput": "e => dispatch(setUsername(e.target.value))"
                     },
                     "open": "",
                     "close": " \/>"
@@ -59,8 +59,8 @@
                     "attributes": {
                         "type": "'password'",
                         "placeholder": "'Heslo'",
-                        "defaultValue": "loginFormPassword",
-                        "onInput": "e => dispatch(setLoginFormPassword(e.target.value))"
+                        "defaultValue": "password",
+                        "onInput": "e => dispatch(setPassword(e.target.value))"
                     },
                     "open": "",
                     "close": " \/>"
@@ -95,13 +95,13 @@
     ],
     "reducers": [
         {
-            "title": "setLoginFormUsername",
+            "title": "setUsername",
             "content": [
                 " state.loginForm.username = action.payload"
             ]
         },
         {
-            "title": "setLoginFormPassword",
+            "title": "setPassword",
             "content": [
                 " state.loginForm.password = action.payload"
             ]
