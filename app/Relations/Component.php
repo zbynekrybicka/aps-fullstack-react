@@ -13,7 +13,6 @@ class Component
     /** @var MetaComponent */
     private $component = null;
     private $title;
-    private $initialAction = null;
 
     /**
      * Component constructor.

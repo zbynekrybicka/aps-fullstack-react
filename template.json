@@ -12,6 +12,7 @@
                 "LoginForm",
                 "Admin"
             ],
+            "initialAction": "",
             "content": [
                 {
                     "title": "LoginForm",
@@ -42,6 +43,7 @@
             ],
             "props": [],
             "components": [],
+            "initialAction": "",
             "content": [
                 {
                     "title": "input",
@@ -83,6 +85,7 @@
             "actions": [],
             "props": [],
             "components": [],
+            "initialAction": "",
             "content": [
                 {
                     "title": "div",
