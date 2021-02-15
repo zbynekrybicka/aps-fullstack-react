@@ -39,6 +39,21 @@ class Process
      *
      */
     public function LoginForm() {
+        $component = $this->fullStack->component('LoginForm');
+
+        $this->inputText($component, 'username', 'loginForm.username', 'Přihlašovací jméno');
+        $this->inputPassword($component, 'password', 'loginForm.password', 'Heslo');
+
+        $component->content('button')
+            ->attribute('className', 'blue')
+            ->content('Přihlásit se')
+            ->eventAction('click', 'postLogin')
+            ->request('post', '/login', 'loginForm', 'userAuth', false)
+            ->success([ 'state.authToken = action.payload.authToken' ])
+            ->error([ "state.errorMessage = 'Přihlášení nebylo úspěšné. Zkontrolujte přihlašovací údaje.'" ])
+            ->service()
+            ->resource('userAuth', 'UserAuthResource')
+            ->method([ 'return $this->userAuth->login($request); ']);
     }
 
 
