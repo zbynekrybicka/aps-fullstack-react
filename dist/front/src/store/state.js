@@ -1,3 +1,7 @@
 export default {
-    "authToken": null
+    "authToken": null,
+    "loginForm": {
+        "username": "",
+        "password": ""
+    }
 }

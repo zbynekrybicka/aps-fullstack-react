@@ -11,6 +11,18 @@ export const reducer = createSlice({
         preloaderOff: (state) => {
             state.preloader = false
         },
+        setUsername: (state, action) => {
+             state.loginForm.username = action.payload
+        },
+        setPassword: (state, action) => {
+             state.loginForm.password = action.payload
+        },
+        postLoginSuccess: (state, action) => {
+            state.authToken = action.payload.authToken
+        },
+        postLoginError: (state, action) => {
+            state.errorMessage = 'Přihlášení nebylo úspěšné. Zkontrolujte přihlašovací údaje.'
+        },
     },
 });
 
