@@ -29,56 +29,6 @@
             ]
         },
         {
-            "title": "LoginForm",
-            "state": {
-                "username": "state.data.loginForm.username",
-                "password": "state.data.loginForm.password"
-            },
-            "reducers": [
-                "setUsername",
-                "setPassword"
-            ],
-            "actions": [
-                "postLogin"
-            ],
-            "props": [],
-            "components": [],
-            "initialAction": "",
-            "content": [
-                {
-                    "title": "input",
-                    "attributes": {
-                        "type": "'text'",
-                        "placeholder": "'P\u0159ihla\u0161ovac\u00ed jm\u00e9no'",
-                        "defaultValue": "username",
-                        "onInput": "e => dispatch(setUsername(e.target.value))"
-                    },
-                    "open": "",
-                    "close": " \/>"
-                },
-                {
-                    "title": "input",
-                    "attributes": {
-                        "type": "'password'",
-                        "placeholder": "'Heslo'",
-                        "defaultValue": "password",
-                        "onInput": "e => dispatch(setPassword(e.target.value))"
-                    },
-                    "open": "",
-                    "close": " \/>"
-                },
-                {
-                    "title": "button",
-                    "attributes": {
-                        "className": "'blue'",
-                        "onClick": "() => dispatch(postLogin())"
-                    },
-                    "open": "",
-                    "close": ">{'P\u0159ihl\u00e1sit se'}<\/button>"
-                }
-            ]
-        },
-        {
             "title": "Admin",
             "state": [],
             "reducers": [],
@@ -96,76 +46,11 @@
             ]
         }
     ],
-    "reducers": [
-        {
-            "title": "setUsername",
-            "content": [
-                " state.loginForm.username = action.payload"
-            ]
-        },
-        {
-            "title": "setPassword",
-            "content": [
-                " state.loginForm.password = action.payload"
-            ]
-        },
-        {
-            "title": "postLoginSuccess",
-            "content": [
-                "state.authToken = action.payload.authToken"
-            ]
-        },
-        {
-            "title": "postLoginError",
-            "content": [
-                "state.errorMessage = 'P\u0159ihl\u00e1\u0161en\u00ed nebylo \u00fasp\u011b\u0161n\u00e9. Zkontrolujte p\u0159ihla\u0161ovac\u00ed \u00fadaje.'"
-            ]
-        }
-    ],
+    "reducers": [],
     "state": {
-        "authToken": null,
-        "loginForm": {
-            "username": "",
-            "password": ""
-        }
+        "authToken": null
     },
-    "actions": [
-        {
-            "title": "postLogin",
-            "method": "post",
-            "url": "http:\/\/localhost:8080\/login",
-            "authorization": false,
-            "before": "preloaderOn",
-            "after": "preloaderOff",
-            "success": "postLoginSuccess",
-            "error": "postLoginError",
-            "store": "loginForm"
-        }
-    ],
-    "routes": [
-        {
-            "method": "post",
-            "url": "\/login",
-            "service": {
-                "className": "userAuth",
-                "method": "postLogin"
-            }
-        }
-    ],
-    "services": [
-        {
-            "title": "userAuth",
-            "resources": {
-                "userAuth": "UserAuthResource"
-            },
-            "methods": [
-                {
-                    "title": "postLogin",
-                    "lines": [
-                        "return $this->userAuth->login($request); "
-                    ]
-                }
-            ]
-        }
-    ]
+    "actions": [],
+    "routes": [],
+    "services": []
 }

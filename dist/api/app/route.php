@@ -2,19 +2,12 @@
 namespace App;
 
 use FastRoute;
-use App\Service\UserAuthService;
 
 function route($method, $url, $headers, $data) {
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Headers: Content-type, Authorization');
     header('Access-Control-Allow-Methods: POST, PUT, GET, OPTIONS');
     $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-        $userAuthService = UserAuthService::get();
-        $r->addRoute(
-            'POST', 
-            '/login', 
-            [ $userAuthService, 'postLogin']
-        );
     });
     $routeInfo = $dispatcher->dispatch($method, $url);
     switch ($routeInfo[0]) {
