@@ -3,23 +3,23 @@ import { reducer } from '../store';
 const {
     preloaderOn,
     preloaderOff,
-    postLoginSuccess,
-    postLoginError
+    pingSuccess,
+    pingError
 } = reducer.actions;
 
 export default () => (dispatch, state) => {
-    const data = state().data.loginForm
+
     dispatch(preloaderOn());
-    axios.post('http://localhost:8081/login',
-        data, {
+    axios.get('http://localhost:8081/ping',
+        {
                 
     })
         .then(({ data }) => {
-            dispatch(postLoginSuccess(data))
+            dispatch(pingSuccess(data))
             dispatch(preloaderOff())
         })
         .catch(({ response }) => {
-            dispatch(postLoginError(response))
+            dispatch(pingError(response))
             dispatch(preloaderOff())
         });
 };

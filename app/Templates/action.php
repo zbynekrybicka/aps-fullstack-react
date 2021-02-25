@@ -9,11 +9,13 @@ const {
 } = reducer.actions;
 
 export default () => (dispatch, state) => {
+<?php if ($store) { ?>
     const data = state().data.<?=$store; ?>
+<?php } ?>
 
     dispatch(<?=$before; ?>());
-    axios.<?=$method; ?>('<?=$url; ?>',
-        <?=in_array($method, ['post', 'put'])
+    axios.<?=strtolower($method); ?>('<?=$url; ?>',
+        <?=in_array(strtolower($method), ['post', 'put'])
             ? 'data, ' : ''; ?>{
         <?=$authorization
             ? 'headers: { Authorization: state().data.authToken },' : ''; ?>

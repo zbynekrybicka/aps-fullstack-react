@@ -25,6 +25,11 @@ class Process
      */
     public function App() {
         $component = $this->fullStack->component('App');
+        $component->initialAction('ping')
+            ->request('GET', '/ping', '', 'ping', false)
+            ->success([])
+            ->error([])
+            ->service()->method(['return new Response(200, \'connection active\');']);
         $component->subComponent('LoginForm')
             ->condition('!AuthToken', 'AuthToken', 'authToken', null);
         $component->subComponent('Admin')
@@ -48,7 +53,7 @@ class Process
             ->attribute('className', 'blue')
             ->content('Přihlásit se')
             ->eventAction('click', 'postLogin')
-            ->request('post', '/login', 'loginForm', 'userAuth', false)
+            ->request('POST', '/login', 'loginForm', 'userAuth', false)
             ->success([ 'state.authToken = action.payload.authToken' ])
             ->error([ "state.errorMessage = 'Přihlášení nebylo úspěšné. Zkontrolujte přihlašovací údaje.'" ])
             ->service()

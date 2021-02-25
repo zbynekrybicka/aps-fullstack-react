@@ -11,6 +11,10 @@ export const reducer = createSlice({
         preloaderOff: (state) => {
             state.preloader = false
         },
+        pingSuccess: (state, action) => {
+        },
+        pingError: (state, action) => {
+        },
         setUsername: (state, action) => {
              state.loginForm.username = action.payload
         },

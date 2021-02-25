@@ -53,6 +53,10 @@
                 "ArrayAccess",
                 "dotnotation"
             ],
+            "support": {
+                "issues": "https://github.com/adbario/php-dot-notation/issues",
+                "source": "https://github.com/adbario/php-dot-notation/tree/2.x"
+            },
             "time": "2019-01-01T23:59:15+00:00"
         }
     ],
@@ -63,5 +67,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }

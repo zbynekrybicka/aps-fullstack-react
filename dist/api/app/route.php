@@ -2,6 +2,7 @@
 namespace App;
 
 use FastRoute;
+use App\Service\PingService;
 use App\Service\UserAuthService;
 
 function route($method, $url, $headers, $data) {
@@ -9,7 +10,13 @@ function route($method, $url, $headers, $data) {
     header('Access-Control-Allow-Headers: Content-type, Authorization');
     header('Access-Control-Allow-Methods: POST, PUT, GET, OPTIONS');
     $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
+        $pingService = PingService::get();
         $userAuthService = UserAuthService::get();
+        $r->addRoute(
+            'GET', 
+            '/ping', 
+            [ $pingService, 'ping']
+        );
         $r->addRoute(
             'POST', 
             '/login', 

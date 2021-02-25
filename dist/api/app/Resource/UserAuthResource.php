@@ -35,34 +35,8 @@ class UserAuthResource
     {
         return [
             'authToken' => $this->jwt->encode($user),
-            'user' => ['id' => $user->id, 'role' => $user->role ],
-            'appData' => $this->loadAppData($user),
+            'user' => ['id' => $user->id, 'role' => $user->role ]
         ];
-    }
-
-    private function loadAppData($user)
-    {
-        switch ($user->role) {
-            case 1:
-
-                return [ 'operator' => [] ];
-
-            case 2:
-
-                return [
-                    'manager' => [
-                        'contact' => [
-                            'items' => $this->db->select('*')->from('contact')->fetchAll()
-                        ],
-                        'campaign' => [
-                            'items' => $this->db->select('*')->from('campaign')->fetchAll()
-                        ],
-                        'call' => [
-                            'items' => $this->db->select('*')->from('call')->fetchAll(),
-                        ]
-                    ]
-                ];
-        }
     }
 
 }

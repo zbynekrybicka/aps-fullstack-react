@@ -17,7 +17,7 @@ class DbConnection
         static $dbConnection = null;
         if (!$dbConnection) {
             $dbConnection = new Connection([
-                'host' => 'localhost',
+                'host' => 'mysql',
                 'port' => 3306,
                 'user' => 'root',
                 'password' => 'password',
