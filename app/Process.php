@@ -71,7 +71,8 @@ class Process
     public function Admin()
     {
         $this->fullStack->component('Admin')
-            ->content('div');
+            ->content('div')
+            ->content('Gratuluji. Jste přihlášení!');
     }
 
 

@@ -6,7 +6,7 @@ const {  } = reducer.actions;
 function Admin({}) {
   const dispatch = useDispatch();
   return (
-            <div />
+            <div>{'Gratuluji. Jste přihlášení!'}</div>
     );
 }
 export default Admin;
